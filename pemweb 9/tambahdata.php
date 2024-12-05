@@ -3,111 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FORM TAMBAH DATA SISWA</title>
+    <title>Form Tambah Data Siswa</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #1c1c1c;
-            color: #fff;
-            margin: 0;
-            padding: 0;
+            background: #f4f4f4;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
         }
         .form-container {
-            background: #2a2a2a;
-            padding: 25px 35px;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
         }
-        .form-container h1 {
-            font-size: 24px;
+        h1 {
             text-align: center;
+            font-size: 20px;
             margin-bottom: 20px;
-            color: #f1c40f;
         }
         .form-group {
             margin-bottom: 15px;
         }
-        .form-group label {
+        label {
             display: block;
-            font-weight: bold;
             margin-bottom: 5px;
-            color: #f0f0f0;
+            font-weight: bold;
         }
-        .form-group input, .form-group select {
+        input, select, button {
             width: 100%;
             padding: 10px;
-            border: 1px solid #555;
-            border-radius: 8px;
-            font-size: 16px;
-            background: #333;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background: #4CAF50;
             color: #fff;
-        }
-        .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: #f1c40f;
-            box-shadow: 0 0 5px rgba(241, 196, 15, 0.8);
-        }
-        .form-button {
-            text-align: center;
-        }
-        .form-button button {
-            background: #f1c40f;
-            color: #1c1c1c;
             border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            border-radius: 8px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s ease;
         }
-        .form-button button:hover {
-            background: #d4ac0d;
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h1>Form Tambah Data Siswa</h1>
-        <form action="#" method="post">
+        <h1>Tambah Data Siswa</h1>
+        <form action="" method="post">
             <div class="form-group">
                 <label for="idSiswa">ID Siswa</label>
-                <input type="text" id="idSiswa" name="idSiswa" placeholder="Masukkan ID Siswa">
+                <input type="text" id="idSiswa" name="idSiswa" required>
             </div>
             <div class="form-group">
                 <label for="namaSiswa">Nama Siswa</label>
-                <input type="text" id="namaSiswa" name="namaSiswa" placeholder="Masukkan Nama Siswa">
-            </div>
-            <div class="form-group">
-                <label for="alamatSiswa">Alamat Siswa</label>
-                <input type="text" id="alamatSiswa" name="alamatSiswa" placeholder="Masukkan Alamat Siswa">
+                <input type="text" id="namaSiswa" name="namaSiswa" required>
             </div>
             <div class="form-group">
                 <label for="jenisKelamin">Jenis Kelamin</label>
-                <select id="jenisKelamin" name="jenisKelamin">
-                    <option value="" disabled selected>Pilih Jenis Kelamin</option>
+                <select id="jenisKelamin" name="jenisKelamin" required>
                     <option value="Laki-laki">Laki-laki</option>
                     <option value="Perempuan">Perempuan</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="agamaSiswa">Agama Siswa</label>
-                <input type="text" id="agamaSiswa" name="agamaSiswa" placeholder="Masukkan Agama Siswa">
-            </div>
-            <div class="form-group">
                 <label for="asalSekolah">Asal Sekolah</label>
-                <input type="text" id="asalSekolah" name="asalSekolah" placeholder="Masukkan Asal Sekolah">
+                <input type="text" id="asalSekolah" name="asalSekolah" required>
             </div>
-            <div class="form-button">
-                <button type="submit">Tambah Data</button>
-            </div>
+            <button type="submit" name="submit">Tambah</button>
         </form>
+
+        <?php
+        if (isset($_POST['submit'])) {
+            $idSiswa = htmlspecialchars($_POST['idSiswa']);
+            $namaSiswa = htmlspecialchars($_POST['namaSiswa']);
+            $jenisKelamin = htmlspecialchars($_POST['jenisKelamin']);
+            $asalSekolah = htmlspecialchars($_POST['asalSekolah']);
+
+            echo '<div class="result">';
+            echo '<p><strong>ID Siswa:</strong> ' . $idSiswa . '</p>';
+            echo '<p><strong>Nama Siswa:</strong> ' . $namaSiswa . '</p>';
+            echo '<p><strong>Jenis Kelamin:</strong> ' . $jenisKelamin . '</p>';
+            echo '<p><strong>Asal Sekolah:</strong> ' . $asalSekolah . '</p>';
+            echo '</div>';
+        }
+        ?>
     </div>
 </body>
 </html>
